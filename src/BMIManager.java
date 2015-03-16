@@ -19,28 +19,12 @@ public class BMIManager {
             scanner.nextLine();
             switch (choice) {
                 case 1: {
-                    System.out.println("Please type your full name:");
-                    String name = scanner.nextLine();
-                    patient.setName(name);
-
-                    System.out.println("Please type you current age:");
-                    int age = scanner.nextInt();
-                    patient.setAge(age);
-
-                    System.out.println("Please type your current hight:");
-                    double height = scanner.nextDouble();
-                    System.out.println("Please type you current weight:");
-                    double weight = scanner.nextDouble();
-                    patient.setDetails(height, weight);
+                    addPatient(patient, scanner);
 
                     break;
                 }
                 case 2: {
-                    System.out.println(String.format("Name: %s Age: %d BMI: %.2f",
-                            patient.getName(),
-                            patient.getAge(),
-                            patient.getBMI()
-                            ));
+                    viewPatient(patient);
 
                     break;
                 }
@@ -50,5 +34,29 @@ public class BMIManager {
                 }
             }
         }
+    }
+
+    private static void viewPatient(Patient patient) {
+        System.out.println(String.format("Name: %s Age: %d BMI: %.2f",
+                patient.getName(),
+                patient.getAge(),
+                patient.getBMI()
+        ));
+    }
+
+    private static void addPatient(Patient patient, Scanner scanner){
+        System.out.println("Please type your full name:");
+        String name = scanner.nextLine();
+        patient.setName(name);
+
+        System.out.println("Please type you current age:");
+        int age = scanner.nextInt();
+        patient.setAge(age);
+
+        System.out.println("Please type your current hight:");
+        double height = scanner.nextDouble();
+        System.out.println("Please type you current weight:");
+        double weight = scanner.nextDouble();
+        patient.setDetails(height, weight);
     }
 }
